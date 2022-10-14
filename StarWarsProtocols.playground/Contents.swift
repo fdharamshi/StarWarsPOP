@@ -56,3 +56,89 @@ struct DarthTyrannous {
  */
 
 
+protocol HasLightSaberSkill {
+  func lightSaberSkill() -> Int
+}
+
+extension HasLightSaberSkill {
+  func lightSaberSkill() -> Int {
+    return 8
+  }
+}
+
+protocol HasTelekenesis {
+  func telekinesis() -> Int
+}
+
+extension HasTelekenesis {
+  func telekinesis() -> Int {
+    return 5
+  }
+}
+
+protocol HasPrescience {
+  func prescience() -> Int
+}
+
+extension HasPrescience{
+  func prescience() -> Int {
+    return 5
+  }
+}
+
+protocol MasterProperties {
+  func introspection() -> String
+  func mindControl() -> String
+}
+
+extension MasterProperties {
+  func introspection() -> String {
+    return "Search your feelings."
+  }
+}
+
+protocol DarthProperties {
+  func forceChoke() -> Bool
+  func forceLightning() -> Bool
+}
+
+extension DarthProperties {
+  func forceChoke() -> Bool {
+    return true
+  }
+  
+  func forceLightning() -> Bool {
+    return true
+  }
+}
+
+// STRUCTS WITH PROTOCOLS BELOW
+
+struct MasterYoda: MasterProperties, HasLightSaberSkill, HasTelekenesis, HasPrescience{
+  func telekinesis() -> Int { return 9 }
+  func mindControl() -> String { return "Do or do not." }
+}
+
+struct MasterObiWan: MasterProperties, HasLightSaberSkill, HasTelekenesis, HasPrescience {
+  func mindControl() -> String { return "These are not the droids you're looking for." }
+}
+
+struct MasterQuiGon: MasterProperties, HasLightSaberSkill, HasTelekenesis, HasPrescience {
+  func mindControl() -> String { return "Republic credits will do." }
+  func introspection() -> String { return "Feel, don’t think. Trust your instincts." }
+}
+
+struct DarthVader: DarthProperties, HasLightSaberSkill, HasTelekenesis, HasPrescience {
+  func lightSaberSkill() -> Int { return 9 }
+  func telekinesis() -> Int { return 8 }
+  func forceLightning() -> Bool { return false }
+}
+
+struct DarthSidious: DarthProperties, HasLightSaberSkill, HasTelekenesis, HasPrescience {
+  func telekinesis() -> Int { return 7 }
+  func prescience() -> Int { return 6 }
+}
+
+struct DarthTyrannous: DarthProperties, HasLightSaberSkill, HasTelekenesis, HasPrescience {
+  func forceChoke() -> Bool { return false }
+}
